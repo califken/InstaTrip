@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css?family=Passion+One');
+
+.brand-logo { 
+    font-family: 'Passion One';
+    letter-spacing: .75px;
+    font-size: 34px !important;
+}
+.carousel img{
+    height: 550px;
+}
+
+#car-item-1 {
+    background-image: url('http://mpggw.com/data/wallpapers/97/WDF_1413816.jpg');
+    background-size: 100%;
+}
+#car-item-2 {
+    background-image: url();
+}
+#car-item-3 {
+    background-image: url();
+}
+#car-item-4 {
+    background-image: url();
+}
+
+
+
+
+
+/* Materialize */
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+main {
+    flex: 1 0 auto;
+}

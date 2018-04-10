@@ -20,28 +20,32 @@
             <div id="buttons" class="col-sm-12 col-md-8">
             </div>
             <div id="form-div" class="col-sm-12 col-md-4">
-
+                    <!-- This section lets the user define the number of search results to return -->
                     <p>Number of results between 1 and 20</p> 
+                    <!-- Default value of 20 is entered, in case user doesn't specify otherwise -->
                     <input id="number" value="20">
-                    <button id="search-button" type="button" onclick="myFunction()">Submit</button>
+                    <!-- Submit button calls validation function to check input value -->
+                    <button id="search-button" type="button" onclick="validation()">Submit</button>
                     <p id="number-input"></p>
                     <script>
-                    function myFunction() {
+                    function validation() {
                     var x, text;
-                    // Get the value of the input field with id="numb"
+                    // Get the value of the input field with id="number"
                     x = document.getElementById("number").value;
+                    //!!REMOVE AFTER DEBUGGING
                     console.log("Input number: " + x);
-                    // If x is Not a Number or less than one or greater than 10
+                    // If x is Not a Number, less than 1, greater than 20
                     if (isNaN(x) || x < 1 || x > 20) {
                     text = "Input not valid";
                     } else {
                     text = "Input OK";
                     }
+                    //Update page with text for invalid or invalid input
                     document.getElementById("number-input").innerHTML = text;
                     }
                     </script>
 
-                    
+                    <!-- Section for user to specify new city -->
                     <p>Enter a city to search</p>
                     <input id ="citySearch" value="Phoenix, AZ">
                     <button id="citySubmit" type="button" >Submit</button>
@@ -49,22 +53,15 @@
                     function cityFunction() {
                     var c = document.getElementById("citySearch").value;
                     console.log("City entered: " + c);
-                    
                     }
                     </script>
+                    <!-- div to hold the results for latitude and longitude -->
                     <div id="result"></div>
                     
                     
-                <!-- <form id="search-form" class="navbar-form navbar-left">
-                    <div class="form-group">
-                        <label for="search-input">Add another location category:</label>
-                    </div><br>
-                    <input type="text" id="search-input">
-                    <br>
-                <input  class="hvr-fade" id="add-type" type="submit" value="Submit">
-                </form> -->
             </div>
         </div>
+        <!-- Div to hold search results -->
         <div id="results-main">
         </div>
         <script src="script.js"></script>

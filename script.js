@@ -39,6 +39,10 @@ $(document).ready(function () {
             //Assign variables to returned longitude and latitude values from the data object
             var latitude = data.results[0].geometry.location.lat;
             var longitude = data.results[0].geometry.location.lng;
+                //Capitalize first letter of city string
+                c = c.toLowerCase().replace(/\b[a-z]/g, function(letter) {
+                    return letter.toUpperCase();
+                });            
             //Display results to page
             $("#result").html("Search for:  " + c + "<hr>" + "Lat: " + latitude + ",  Lng: " + longitude);
             //Set global lat and lon variables to the returned values
@@ -143,17 +147,25 @@ $(document).ready(function () {
         })
             // After the data comes back from the API
             .then(function (response) {
-                // Storing an array of results in the results variable
+                //Storing an array of results in the results variable
                 var weatherData = response.weather;
                 //A div to hold the weather data
                 var weatherDiv = $("<div class='weather-divs'>");
-                // Set a variable to the temp from the API
+                //Set a variable to the temp from the API
                 var placeTemp = response.main.temp;
                 console.log(placeTemp);
-                //convert temp from Kelvin to Fahrenheit
+                //Convert temp from Kelvin to Fahrenheit
                 var tempF = Math.floor(placeTemp * (9 / 5) - 459.67);
-                // Creating an element to have the temp displayed
-                var pTemp = $("<p>").text("Temp: " + tempF + "F");
+                //Creating an element to have the temp displayed
+                var pTemp = $("<p style='font-weight: bold;'>").text("Temp: " + tempF + "F");
+                //Set a variable to the weather description
+                var weatherDesc = response.weather[0].description;
+                    //Method for weather desc string to capitalize first letter of each word 
+                    weatherDesc = weatherDesc.toLowerCase().replace(/\b[a-z]/g, function(letter) {
+                        return letter.toUpperCase();
+                    });
+                //Create a paragraph element to display the weather description
+                var pDesc = $("<p>").text(weatherDesc);                
                 // Set a variable to the icon code for the current weather
                 var iconCode = response.weather[0].icon;
                 var iconURL = "https://openweathermap.org/img/w/" + iconCode + ".png";
@@ -162,7 +174,7 @@ $(document).ready(function () {
                 iconHTML.attr("src", iconURL);
                 iconHTML.attr("class", "weather-icon");
                 //Update weather div with the temp and weather icon
-                weatherDiv.append(pTemp, iconHTML);
+                weatherDiv.append(pTemp, pDesc, iconHTML);
                 //Update page with the weather div content
                 $("#result").append(weatherDiv);
             });

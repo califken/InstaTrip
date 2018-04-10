@@ -104,7 +104,7 @@ $(document).ready(function () {
                         // Set a variable to the place's name from the API
                         var placeName = response.results[i].name;
                         // Creating an element to have the name displayed
-                        var pName = $("<p>").text((i + 1) + ".  " + "Name: " + placeName);
+                        var pName = $("<p style='font-weight: bold;'>").text((i + 1) + ".   " + placeName);
                         var address = response.results[i].formatted_address;
                         var pAddress = $("<p>").text("Address: " + address);
                         //'If' function to check if the photo reference property is undefined

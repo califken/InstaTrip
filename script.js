@@ -13,6 +13,7 @@ $(document).ready(function () {
     //Function to run after city entered, submit clicked
     $("#citySubmit").on("click", function () {
         //Empty the results div of any previous search results
+        var c = document.getElementById("citySearch").value;
         $("#results-main").empty();
         //Variable to hold google API key
         var googleAPIkey = "&key=AIzaSyBKV1JVEtr31cn9Hpi6L8d-dCN8cCSQISc";

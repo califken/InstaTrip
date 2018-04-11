@@ -196,10 +196,10 @@ var data2 = "";
                                         console.log(data2);
                                         $(".webcam").empty();
                                         var thisli = "";
-                                        for (var i = 0; i < data2.result.webcams.length; i++) {
+                                         for (var i = 0; i < data2.result.webcams.length; i++) {
                                             // create a "card" variable, it's going to be a div
-                                            thisli = '<li data-thumb="' + data2.result.webcams[i].image.current.thumbnail + '"><img src="' + data2.result.webcams[i].image.current.preview + '" /></li>' + thisli;
                                             //alert(img);
+                                            $("#lightSlider").empty().html('<li data-thumb="' + data2.result.webcams[i].image.current.thumbnail + '"><img src="' + data2.result.webcams[i].image.current.preview + '" /></li>');
 
                                         }
                                         

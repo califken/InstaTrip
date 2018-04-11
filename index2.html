@@ -197,10 +197,27 @@ var data2 = "";
                                         $(".webcam").empty();
                                         var thisli = "";
                                          for (var i = 0; i < data2.result.webcams.length; i++) {
+                                             
+                                             /**
                                             // create a "card" variable, it's going to be a div
                                             //alert(img);
                                             $("#lightSlider").empty().html('<li data-thumb="' + data2.result.webcams[i].image.current.thumbnail + '"><img src="' + data2.result.webcams[i].image.current.preview + '" /></li>');
+**/
+                                             
+                                             
+                                               fetch(data2.result.webcams[i].image.current.preview).then(function(response) {
+                                                if (response.ok) {
 
+                                                }
+                                                throw new Error('Network response was not ok.');
+                                            }).then(function(myBlob) {
+                                                $("#lightSlider").empty().html('<li data-thumb="' + data2.result.webcams[i].image.current.thumbnail + '"><img src="' + data2.result.webcams[i].image.current.preview + '" /></li>');
+
+                                            }).catch(function(error) {
+                                                console.log('There has been a problem with your fetch operation: ', error.message);
+                                            });
+                                             
+                                             
                                         }
                                         
                                         $("#lightSlider").empty().html(thisli);
